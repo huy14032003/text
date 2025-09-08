@@ -1,13 +1,13 @@
-****************làm popup:***********
+làm popup:
 -tạo class popup>class content-popup
 -luôn có position:fixed; top: 0; left:0; z-index:999; của class popup
 -thằng content tự chỉnh magin: auto; cho ra giwuax màn
 
-
-**********Nội dung luôn nằm trong div:***********
+-------------------------------//////////---------------------------------------
+Nội dung luôn nằm trong div:
   .wrapper
   {
-    height: 300px;
+    height: 300px;.                                
     width:500px;
     border: 1px solid green;
     overflow: hidden;
@@ -25,66 +25,42 @@
     display: block;
   }
 
-*************Phân trang********
- <script>
-      let currentPage = 1;
-      const rowsPerPage = 5;
 
-      function renderTable() {
-        const table = document.getElementById("myTable");
-        const rows = table.querySelectorAll("tbody tr");
-        const totalRows = rows.length;
-        const totalPages = Math.ceil(totalRows / rowsPerPage);
+-------------------------------//////////---------------------------------------
 
-        // Ẩn tất cả dòng
-        rows.forEach((row, index) => {
-          row.style.display = "none";
-          if (
-            index >= (currentPage - 1) * rowsPerPage &&
-            index < currentPage * rowsPerPage
-          ) {
-            row.style.display = "";
-          }
-        });
 
-        renderPagination(totalPages);
-      }
-      function renderPagination(totalPages) {
-        const pagination = document.getElementById("pagination");
-        pagination.innerHTML = "";
+để chart luôn nằm trong o thì cần phải set width height cho cha lớn nhất, set width=100% height=100% cho ô chứa chart, set vào chart height=100% width=100%
 
-        function addButton(label, page, active = false, disabled = false) {
-          const btn = document.createElement("button");
-          btn.textContent = label;
-          if (active) btn.classList.add("active");
-          if (disabled) btn.disabled = true;
-          if (!disabled) {
-            btn.addEventListener("click", () => {
-              currentPage = page;
-              renderTable();
-            });
-          }
-          pagination.appendChild(btn);
-        }
+-------------------------------//////////---------------------------------------
 
-        addButton("«", currentPage - 1, false, currentPage === 1);
 
-        if (currentPage > 2) addButton(1, 1);
-        if (currentPage >= 3)
-          pagination.appendChild(document.createTextNode("..."));
+cấu trúc chung của 1 app js
 
-        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
-          if (i > 0 && i <= totalPages) {
-            addButton(i, i, i === currentPage);
-          }
-        }
 
-        if (currentPage < totalPages - 2)
-          pagination.appendChild(document.createTextNode("..."));
-        if (currentPage < totalPages - 1) addButton(totalPages, totalPages);
+bọc ngoài là arrow function 
+const App=(()=>{
 
-        addButton("»", currentPage + 1, false, currentPage === totalPages);
-      }
+const _otps = {};
 
-      renderTable(); 
-    </script>
+const _state={};
+
+const _ui={};
+
+const ENUMS={};
+
+function render(){};
+
+function handleAddEventListener(){};
+
+function init()
+{
+   render();
+   handleAddEventListener();
+}
+return{init}
+})()
+export default App
+
+document.addEventListener("DOMContentLoaded", () => {
+  App.init();
+});
