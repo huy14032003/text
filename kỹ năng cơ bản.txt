@@ -38,7 +38,7 @@ cấu trúc chung của 1 app js
 
 
 bọc ngoài là arrow function 
-const App=(()=>{
+const App=()=>{
 
 const _otps = {};
 
@@ -58,9 +58,34 @@ function init()
    handleAddEventListener();
 }
 return{init}
-})()
+}
 export default App
 
 document.addEventListener("DOMContentLoaded", () => {
-  App.init();
+  const app=App()
+  app.init();
 });
+-------------------------------//////////---------------------------------------
+Kỹ năng css không de bị vỡ layout dashboard
+
+html {
+   font-size: 1vw;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+.title {
+  font-size: 2.5rem;
+}
+.card {
+  height: 20rem !important;
+  background: rgba(47, 47, 92, 0.7) !important;
+  border: none !important;
+  font-size: 1.2rem; /* sẽ co giãn khi zoom */
+}
+
+NOTE: Tất cả phải chia theo rem
